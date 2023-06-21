@@ -6,11 +6,11 @@ import Box from "@mui/material/Box";
 
 const DieThrowResult = ({result}) => {
     return (
-        <Box
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-        >
+            <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+            >
             <Stack
                 direction="row"
                 spacing={1}

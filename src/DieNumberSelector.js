@@ -1,36 +1,35 @@
 import React from 'react';
-import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
 
 const DieNumberSelector = ({selectedNumber, handleNumberChange}) => {
-    const maxNumberOfDice = 10;
-
+    const maxNumberOfDice = 9;
     return (
         <div>
             <FormControl>
-                <RadioGroup
-                    row
-                    aria-labelledby="demo-row-radio-buttons-group-label"
-                    name="row-radio-buttons-group"
-                >
-
+                <Stack direction="row" spacing={2}>
                     {[...Array(maxNumberOfDice)].map((_, index) => {
                         const number = index + 1;
                         return (
-                            <div key={number}>
-                                <input
-                                    type="radio"
-                                    id={`number-selector-${number}`}
-                                    name="number-selector"
-                                    value={number}
-                                    checked={selectedNumber === number}
-                                    onChange={handleNumberChange}
-                                />
-                                <label htmlFor={`number-selector-${number}`}>{number}x</label>
-                            </div>
+                            <Chip
+                                sx={{
+                                    height: '4.5em',
+                                    width: '4.5em',
+                                    '& .MuiChip-label': {
+                                        display: 'block',
+                                        whiteSpace: 'normal',
+                                    },
+                                }}
+                                key={number}
+                                label={<>{number}x</>}
+                                onClick={() => handleNumberChange(number)}
+                                variant={selectedNumber === number ? undefined : "outlined"}
+                                color={selectedNumber === number ? "primary" : undefined}
+                            />
                         );
                     })}
-                </RadioGroup>
+                </Stack>
             </FormControl>
         </div>
     );

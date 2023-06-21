@@ -7,6 +7,7 @@ import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Box from "@mui/material/Box";
 
 const darkTheme = createTheme({
     palette: {
@@ -15,16 +16,16 @@ const darkTheme = createTheme({
 });
 
 const App = () => {
-    const [selectedDice, setSelectedDice] = useState('d20');
+    const [selectedDice, setSelectedDice] = useState('D20');
     const [selectedNumber, setSelectedNumber] = useState(1);
     const [result, setResult] = useState(null);
 
-    const handleDiceChange = (e) => {
-        setSelectedDice(e.target.value);
+    const handleDiceChange = (value) => {
+        setSelectedDice(value);
     };
 
-    const handleNumberChange = (e) => {
-        setSelectedNumber(parseInt(e.target.value));
+    const handleNumberChange = (value) => {
+        setSelectedNumber(parseInt(value));
     };
 
     const handleThrow = () => {
@@ -43,13 +44,19 @@ const App = () => {
             <ThemeProvider theme={darkTheme}>
                 <CssBaseline/>
                 <Container maxWidth="sm">
-                    <h1>Dice Generator</h1>
-                    <Stack spacing={3}>
+                    <Box
+                        display="flex"
+                        justifyContent="center"
+                        alignItems="center"
+                    >
+                    <Stack spacing={5}>
+                        <h1>Dice Generator</h1>
                         <DiceSelector selectedDice={selectedDice} handleDiceChange={handleDiceChange}/>
                         <DieNumberSelector selectedNumber={selectedNumber} handleNumberChange={handleNumberChange}/>
                         <ThrowDiceButton handleThrow={handleThrow}/>
                         {result !== null && <DieThrowResult result={result}/>}
                     </Stack>
+                    </Box>
                 </Container>
             </ThemeProvider>
         </React.Fragment>

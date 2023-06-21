@@ -1,42 +1,33 @@
 import React from 'react';
-import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
 
 const DiceSelector = ({selectedDice, handleDiceChange}) => {
-    const diceOptions = [
-        {label: 'D2', value: 'd2'},
-        {label: 'D3', value: 'd3'},
-        {label: 'D4', value: 'd4'},
-        {label: 'D6', value: 'd6'},
-        {label: 'D8', value: 'd8'},
-        {label: 'D10', value: 'd10'},
-        {label: 'D12', value: 'd12'},
-        {label: 'D20', value: 'd20'},
-        {label: 'D100', value: 'd100'},
-    ];
+    const diceOptions = ['D2', 'D3', 'D4', 'D6', 'D8', 'D10', 'D12', 'D20', 'D100'];
 
     return (
         <div>
             <FormControl>
-                <RadioGroup
-                    row
-                    aria-labelledby="demo-row-radio-buttons-group-label"
-                    name="row-radio-buttons-group"
-                >
+                <Stack direction="row" spacing={2}>
                     {diceOptions.map((option) => (
-                        <div key={option.value}>
-                            <input
-                                type="radio"
-                                id={option.value}
-                                name="dice-selector"
-                                value={option.value}
-                                checked={selectedDice === option.value}
-                                onChange={handleDiceChange}
-                            />
-                            <label htmlFor={option.value}>{option.label}</label>
-                        </div>
+                        <Chip
+                            sx={{
+                                height: '4.5em',
+                                width: '4.5em',
+                                '& .MuiChip-label': {
+                                    display: 'block',
+                                    whiteSpace: 'normal',
+                                },
+                            }}
+                            key={option}
+                            label={option}
+                            onClick={() => handleDiceChange(option)}
+                            variant={selectedDice === option ? undefined : "outlined"}
+                            color={selectedDice === option ? "primary" : undefined}
+                        />
                     ))}
-                </RadioGroup>
+                </Stack>
             </FormControl>
         </div>
     );
