@@ -15,7 +15,7 @@ const darkTheme = createTheme({
 });
 
 const App = () => {
-    const [selectedDice, setSelectedDice] = useState('d6');
+    const [selectedDice, setSelectedDice] = useState('d20');
     const [selectedNumber, setSelectedNumber] = useState(1);
     const [result, setResult] = useState(null);
 
