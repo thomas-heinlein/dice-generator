@@ -4,6 +4,7 @@ import FormControl from '@mui/material/FormControl';
 
 const DiceSelector = ({selectedDice, handleDiceChange}) => {
     const diceOptions = [
+        {label: 'D2', value: 'd2'},
         {label: 'D3', value: 'd3'},
         {label: 'D4', value: 'd4'},
         {label: 'D6', value: 'd6'},

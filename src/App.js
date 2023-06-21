@@ -6,6 +6,13 @@ import DieThrowResult from './DieThrowResult';
 import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const darkTheme = createTheme({
+    palette: {
+        mode: 'dark',
+    },
+});
 
 const App = () => {
     const [selectedDice, setSelectedDice] = useState('d6');
@@ -33,16 +40,18 @@ const App = () => {
 
     return (
         <React.Fragment>
-            <CssBaseline />
-            <Container maxWidth="sm">
-                <h1>Dice Generator</h1>
-                <Stack spacing={3}>
-                    <DiceSelector selectedDice={selectedDice} handleDiceChange={handleDiceChange}/>
-                    <DieNumberSelector selectedNumber={selectedNumber} handleNumberChange={handleNumberChange}/>
-                    <ThrowDiceButton handleThrow={handleThrow}/>
-                    {result !== null && <DieThrowResult result={result}/>}
-                </Stack>
-            </Container>
+            <ThemeProvider theme={darkTheme}>
+                <CssBaseline/>
+                <Container maxWidth="sm">
+                    <h1>Dice Generator</h1>
+                    <Stack spacing={3}>
+                        <DiceSelector selectedDice={selectedDice} handleDiceChange={handleDiceChange}/>
+                        <DieNumberSelector selectedNumber={selectedNumber} handleNumberChange={handleNumberChange}/>
+                        <ThrowDiceButton handleThrow={handleThrow}/>
+                        {result !== null && <DieThrowResult result={result}/>}
+                    </Stack>
+                </Container>
+            </ThemeProvider>
         </React.Fragment>
     );
 };
