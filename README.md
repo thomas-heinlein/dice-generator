@@ -10,5 +10,6 @@ You can find a deployed version of this application at https://dice.thomasheinle
 
 # Running the application
 
+Install dependencies with `npm install`.
 Start with `npm start`.
 Accessible on http://localhost:3000.

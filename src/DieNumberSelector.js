@@ -26,7 +26,7 @@ const DieNumberSelector = ({selectedNumber, handleNumberChange}) => {
                                     checked={selectedNumber === number}
                                     onChange={handleNumberChange}
                                 />
-                                <label htmlFor={`number-selector-${number}`}>{number}</label>
+                                <label htmlFor={`number-selector-${number}`}>{number}x</label>
                             </div>
                         );
                     })}
