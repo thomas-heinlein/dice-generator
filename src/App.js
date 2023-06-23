@@ -42,7 +42,7 @@ const App = () => {
         <React.Fragment>
             <ThemeProvider theme={darkTheme}>
                 <CssBaseline/>
-                <Container maxWidth="sm">
+                <Container maxWidth="md">
                     <h1>Dice Generator</h1>
                     <Stack spacing={5}>
                         <DiceSelector selectedDice={selectedDice} handleDiceChange={handleDiceChange}/>
