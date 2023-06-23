@@ -1,32 +1,26 @@
 import React from 'react';
 import Chip from '@mui/material/Chip';
-import Stack from '@mui/material/Stack';
 import FunctionsIcon from '@mui/icons-material/Functions';
-import Box from "@mui/material/Box";
+import Grid from '@mui/material/Grid';
 
 const DieThrowResult = ({result}) => {
     return (
-            <Box
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-            >
-            <Stack
-                direction="row"
-                spacing={1}
-            >
-                {result.map((singleDie, index) => (
+        <Grid container spacing={2} columns={18}>
+            {result.map((singleDie, index) => (
+                <Grid item xs={3}>
                     <Chip key={index} variant="outlined" label={singleDie}/>
-                ))}
-                <>
-                    {
-                        result.length > 1 &&
+                </Grid>
+            ))}
+            <>
+                {
+                    result.length > 1 &&
+                    <Grid item xs={5}>
                         <Chip icon={<FunctionsIcon/>} variant="outlined"
                               label={result.reduce((sum, result) => sum + result, 0)}/>
-                    }
-                </>
-            </Stack>
-        </Box>
+                    </Grid>
+                }
+            </>
+        </Grid>
     );
 };
 

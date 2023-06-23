@@ -6,8 +6,7 @@ import DieThrowResult from './DieThrowResult';
 import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Box from "@mui/material/Box";
+import {createTheme, ThemeProvider} from '@mui/material/styles';
 
 const darkTheme = createTheme({
     palette: {
@@ -44,19 +43,13 @@ const App = () => {
             <ThemeProvider theme={darkTheme}>
                 <CssBaseline/>
                 <Container maxWidth="sm">
-                    <Box
-                        display="flex"
-                        justifyContent="center"
-                        alignItems="center"
-                    >
+                    <h1>Dice Generator</h1>
                     <Stack spacing={5}>
-                        <h1>Dice Generator</h1>
                         <DiceSelector selectedDice={selectedDice} handleDiceChange={handleDiceChange}/>
                         <DieNumberSelector selectedNumber={selectedNumber} handleNumberChange={handleNumberChange}/>
                         <ThrowDiceButton handleThrow={handleThrow}/>
                         {result !== null && <DieThrowResult result={result}/>}
                     </Stack>
-                    </Box>
                 </Container>
             </ThemeProvider>
         </React.Fragment>
