@@ -11,7 +11,7 @@ const DiceSelector = ({selectedDice, handleDiceChange}) => {
             <FormControl>
                 <Grid container spacing={2} columns={18}>
                     {diceOptions.map((option) => (
-                        <Grid item xs={3} md={2}>
+                        <Grid item xs={4} md={2}>
                             <Chip
                                 sx={{
                                     height: '4.5em',

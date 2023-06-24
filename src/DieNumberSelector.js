@@ -12,7 +12,7 @@ const DieNumberSelector = ({selectedNumber, handleNumberChange}) => {
                     {[...Array(maxNumberOfDice)].map((_, index) => {
                         const number = index + 1;
                         return (
-                            <Grid item xs={3} md={2}>
+                            <Grid item xs={4} md={2}>
                                 <Chip
                                     sx={{
                                         height: '4.5em',
