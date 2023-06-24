@@ -36,6 +36,9 @@ const App = () => {
             throws.push(throwResult);
         }
         setResult(throws);
+        document.getElementById("dice-result").scrollIntoView({
+            behavior: 'smooth'
+        });
     };
 
     return (

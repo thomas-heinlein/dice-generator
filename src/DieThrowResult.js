@@ -5,22 +5,24 @@ import Grid from '@mui/material/Grid';
 
 const DieThrowResult = ({result}) => {
     return (
-        <Grid container spacing={2} columns={18}>
-            {result.map((singleDie, index) => (
-                <Grid item xs={3}>
-                    <Chip key={index} variant="outlined" label={singleDie}/>
-                </Grid>
-            ))}
-            <>
-                {
-                    result.length > 1 &&
-                    <Grid item xs={5}>
-                        <Chip icon={<FunctionsIcon/>} variant="outlined"
-                              label={result.reduce((sum, result) => sum + result, 0)}/>
+        <div id="dice-result">
+            <Grid container spacing={2} columns={18}>
+                {result.map((singleDie, index) => (
+                    <Grid item xs={3}>
+                        <Chip key={index} variant="outlined" label={singleDie}/>
                     </Grid>
-                }
-            </>
-        </Grid>
+                ))}
+                <>
+                    {
+                        result.length > 1 &&
+                        <Grid item xs={5}>
+                            <Chip icon={<FunctionsIcon/>} variant="outlined"
+                                  label={result.reduce((sum, result) => sum + result, 0)}/>
+                        </Grid>
+                    }
+                </>
+            </Grid>
+        </div>
     );
 };
 
