@@ -27,6 +27,7 @@ const App = () => {
     const [result, setResult] = useState(null);
     const [darkModelEnabled, setDarkModelEnabled] = useState(true);
     const appliedTheme = useMemo(() => createTheme(darkModelEnabled ? darkTheme : lightTheme), [darkModelEnabled]);
+    const showAllOptionsInitially = window.innerWidth > 900;
 
     const handleDiceChange = (value) => {
         setSelectedDice(value);
@@ -51,7 +52,7 @@ const App = () => {
         <React.Fragment>
             <ThemeProvider theme={appliedTheme}>
                 <CssBaseline/>
-                <Container maxWidth="md">
+                <Container maxWidth="lg">
                     <h1 style={{
                         display: "flex",
                         justifyContent: "space-between",
@@ -61,8 +62,10 @@ const App = () => {
                                            setDarkModelEnabled={setDarkModelEnabled}/>
                     </h1>
                     <Stack spacing={5}>
-                        <DiceSelector selectedDice={selectedDice} handleDiceChange={handleDiceChange}/>
-                        <DieNumberSelector selectedNumber={selectedNumber} handleNumberChange={handleNumberChange}/>
+                        <DiceSelector selectedDice={selectedDice} handleDiceChange={handleDiceChange}
+                                      showAllOptionsInitially={showAllOptionsInitially}/>
+                        <DieNumberSelector selectedNumber={selectedNumber} handleNumberChange={handleNumberChange}
+                                           showAllOptionsInitially={showAllOptionsInitially}/>
                         <ThrowDiceButton handleThrow={handleThrow}/>
                         {result !== null && <DieThrowResult result={result}/>}
                     </Stack>
