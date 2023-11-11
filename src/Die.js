@@ -1,7 +1,7 @@
 import React from "react";
 import Chip from "@mui/material/Chip";
 
-const Die = ({ key, label, selected, onClick, icon }) => {
+const Die = ({ label, selected, onClick, icon }) => {
   return (
     <Chip
       sx={{
@@ -13,7 +13,6 @@ const Die = ({ key, label, selected, onClick, icon }) => {
         },
       }}
       icon={icon}
-      key={key}
       label={label}
       onClick={onClick ? () => onClick(label) : undefined}
       variant={selected ? undefined : "outlined"}

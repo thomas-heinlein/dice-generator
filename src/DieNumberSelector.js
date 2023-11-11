@@ -26,9 +26,8 @@ const DieNumberSelector = ({
       <Grid container spacing={2} columns={36}>
         {getDiceOptions().map((number) => {
           return (
-            <Grid item xs={8} md={3}>
+            <Grid key={number} item xs={8} md={3}>
               <Die
-                key={number}
                 label={number + "x"}
                 onClick={(n) => handleNumberChange(n)}
                 selected={selectedNumber === number}
@@ -36,9 +35,8 @@ const DieNumberSelector = ({
             </Grid>
           );
         })}
-        <Grid item xs={8} md={3}>
+        <Grid key={"show-all"} item xs={8} md={3}>
           <Die
-            key={"show-all"}
             label={showingAllOptions ? "<<" : ">>"}
             onClick={() => setShowingAllOptions(!showingAllOptions)}
           />

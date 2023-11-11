@@ -35,18 +35,16 @@ const DiceSelector = ({
     <div>
       <Grid container spacing={2} columns={36}>
         {getDiceOptions().map((option) => (
-          <Grid item xs={8} md={3}>
+          <Grid key={option} item xs={8} md={3}>
             <Die
-              key={option}
               label={option}
               onClick={(o) => handleDiceChange(o)}
               selected={selectedDice === option}
             />
           </Grid>
         ))}
-        <Grid item xs={8} md={3}>
+        <Grid key={"show-all"} item xs={8} md={3}>
           <Die
-            key={"show-all"}
             label={showingAllOptions ? "<<" : ">>"}
             onClick={() => setShowingAllOptions(!showingAllOptions)}
           />
