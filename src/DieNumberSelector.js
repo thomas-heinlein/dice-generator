@@ -7,26 +7,24 @@ const DieNumberSelector = ({
   handleNumberChange,
   showAllOptionsInitially,
 }) => {
-  const getMaxNumberOfDice = () => (showingAllOptions ? 9 : 2);
+  const getDiceOptions = () => {
+    if (showingAllOptions) {
+      return [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    }
+    if (selectedNumber === 1) {
+      return [1, 2];
+    }
+    return [1, selectedNumber];
+  };
 
   const [showingAllOptions, setShowingAllOptions] = useState(
     showAllOptionsInitially,
   );
 
-  const sx = {
-    height: "4.5em",
-    width: "4.5em",
-    "& .MuiChip-label": {
-      display: "block",
-      whiteSpace: "normal",
-    },
-  };
-
   return (
     <div>
       <Grid container spacing={2} columns={36}>
-        {[...Array(getMaxNumberOfDice())].map((_, index) => {
-          const number = index + 1;
+        {getDiceOptions().map((number) => {
           return (
             <Grid item xs={8} md={3}>
               <Die

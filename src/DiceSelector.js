@@ -21,10 +21,15 @@ const DiceSelector = ({
     "D20",
     "D100",
   ];
-  const limitedDiceOptions = ["D6", "D20"];
-
-  const getDiceOptions = () =>
-    showingAllOptions ? allDiceOptions : limitedDiceOptions;
+  const getDiceOptions = () => {
+    if (showingAllOptions) {
+      return allDiceOptions;
+    }
+    if (selectedDice === "D2") {
+      return ["D2", "D20"];
+    }
+    return ["D2", selectedDice];
+  };
 
   return (
     <div>
