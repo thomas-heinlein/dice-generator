@@ -2,13 +2,15 @@ import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
 import { Alert } from "@mui/material";
 import Stack from "@mui/material/Stack";
+import yaml from "js-yaml";
 
 const CharacterEdit = ({ character, setCharacter }) => {
   const [alert, setAlert] = useState();
 
+  const convertYmlToJson = (yml) => yaml.load(yml);
   const isParsable = (value) => {
     try {
-      JSON.parse(value);
+      convertYmlToJson(value);
       return true;
     } catch (e) {
       return false;
@@ -16,11 +18,11 @@ const CharacterEdit = ({ character, setCharacter }) => {
   };
 
   const handleChange = (event) => {
-    const newCharacter = event.target.value;
-    if (isParsable(newCharacter)) {
-      const parsedCharacter = JSON.parse(newCharacter);
-      setCharacter(parsedCharacter);
-      localStorage.setItem("char", JSON.stringify(parsedCharacter));
+    const newCharacterAsYml = event.target.value;
+    if (isParsable(newCharacterAsYml)) {
+      const newCharacterAsJson = convertYmlToJson(newCharacterAsYml);
+      setCharacter(newCharacterAsJson);
+      localStorage.setItem("char", JSON.stringify(newCharacterAsJson));
       setAlert("saved");
     } else {
       setAlert("not_parsable");
@@ -30,12 +32,17 @@ const CharacterEdit = ({ character, setCharacter }) => {
   return (
     <Stack spacing={3}>
       <Alert severity="info">
-        Here you can edit the character data which is shown in the second tab.
-        If the format is valid the changes will be automatically saved. The data
-        is stored only within the browser! Note that if you change the browser
-        or clear the cookies you will loose your character stats. Please create
-        regular backups by copying the text below into a file! You can restore
+        Here you can edit the character data, which is shown in the second tab.
+        If the format is valid, the changes will be automatically saved. Please
+        note that the data is stored only within your browser! If you change the
+        browser or clear the cookies you will loose your character stats. Please
+        create a backup by copying the text below into a file! You can restore
         the backup by pasting the text back into the text field.
+      </Alert>
+      <Alert severity="info">
+        The text is shown in YAML format. Note that spaces and indent matter! If
+        you have problems you can always ask ChatGPT to reformat your stats into
+        valid YAML.
       </Alert>
       {alert === "saved" && (
         <Alert severity="success">Character saved successfully!</Alert>
@@ -46,7 +53,7 @@ const CharacterEdit = ({ character, setCharacter }) => {
       <TextField
         fullWidth
         multiline
-        defaultValue={JSON.stringify(character, null, "\t")}
+        defaultValue={yaml.dump(character)}
         onChange={(e) => handleChange(e)}
       />
     </Stack>
