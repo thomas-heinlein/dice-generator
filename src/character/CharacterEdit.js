@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Alert } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import yaml from "js-yaml";
+import isParsableCharacter from "./CharacterParsableChecker";
 
 const CharacterEdit = ({ character, setCharacter }) => {
   const [alert, setAlert] = useState();
@@ -19,7 +20,10 @@ const CharacterEdit = ({ character, setCharacter }) => {
 
   const handleChange = (event) => {
     const newCharacterAsYml = event.target.value;
-    if (isParsable(newCharacterAsYml)) {
+    if (
+      isParsable(newCharacterAsYml) &&
+      isParsableCharacter(convertYmlToJson(newCharacterAsYml))
+    ) {
       const newCharacterAsJson = convertYmlToJson(newCharacterAsYml);
       setCharacter(newCharacterAsJson);
       localStorage.setItem("char", JSON.stringify(newCharacterAsJson));
@@ -41,8 +45,8 @@ const CharacterEdit = ({ character, setCharacter }) => {
       </Alert>
       <Alert severity="info">
         The text is shown in YAML format. Note that spaces and indent matter! If
-        you have problems you can always ask ChatGPT to reformat your stats into
-        valid YAML.
+        you have problems you can always ask ChatGPT to reformat your character
+        values into a valid YAML format.
       </Alert>
       {alert === "saved" && (
         <Alert severity="success">Character saved successfully!</Alert>
@@ -50,8 +54,10 @@ const CharacterEdit = ({ character, setCharacter }) => {
       {alert === "not_parsable" && (
         <Alert severity="error">Format not correct!</Alert>
       )}
+
       <TextField
         fullWidth
+        error={alert === "not_parsable"}
         multiline
         defaultValue={yaml.dump(character)}
         onChange={(e) => handleChange(e)}

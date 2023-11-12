@@ -4,38 +4,16 @@ import Box from "@mui/material/Box";
 import React from "react";
 
 const CharacterValueBox = ({ boxItems }) => {
-  const hasValueProperty = (o) => o && typeof o === "object" && "value" in o;
-
-  const printDescriptionAndValue = (descriptionWithValue) => {
-    if (hasValueProperty(descriptionWithValue)) {
-      return (
-        <Typography>
-          {descriptionWithValue.description}: {descriptionWithValue.value}
-        </Typography>
-      );
-    }
-    return <></>;
-  };
-
-  const isFunction = () => {
-    return (
-      boxItems && boxItems.items && typeof boxItems.items.map === "function"
-    );
-  };
-
-  const mapItem = (item, index) => {
-    return (
-      <Box key={boxItems.title + "-" + index}>
-        {printDescriptionAndValue(item)}
-      </Box>
-    );
-  };
+  const mapItem = (item, index) => (
+    <Box key={boxItems.title + "-" + index}>
+      <Typography>
+        {item.description}: {item.value}
+      </Typography>
+    </Box>
+  );
 
   const printItems = () => {
-    if (isFunction()) {
-      return boxItems.items.map((item, index) => mapItem(item, index));
-    }
-    return <>not parsable</>;
+    return boxItems.items.map((item, index) => mapItem(item, index));
   };
 
   return (
@@ -46,5 +24,4 @@ const CharacterValueBox = ({ boxItems }) => {
     </Box>
   );
 };
-
 export default CharacterValueBox;
