@@ -11,7 +11,7 @@ import CharacterEdit from "../character/CharacterEdit";
 import DefaultCharacter from "../character/DefaultCharacter";
 import CharacterValues from "../character/CharacterValues";
 
-const TabNavigation = () => {
+const TabNavigation = ({ setPageTitle }) => {
   const charFromLocalStorage = localStorage.getItem("char");
   const [currentTab, setCurrentTab] = useState(0);
   const [character, setCharacter] = useState(
@@ -19,6 +19,19 @@ const TabNavigation = () => {
   );
 
   const handleTabChange = (_, newValue) => {
+    switch (newValue) {
+      case 0:
+        setPageTitle("Throw dice");
+        break;
+      case 1:
+        setPageTitle("Character sheet");
+        break;
+      case 2:
+        setPageTitle("Edit character sheet");
+        break;
+      default:
+        console.error("Page title name not defined for tab");
+    }
     setCurrentTab(newValue);
   };
 

@@ -19,7 +19,7 @@ const lightTheme = createTheme({
 
 const App = () => {
   const [darkModelEnabled, setDarkModelEnabled] = useState(true);
-
+  const [pageTitle, setPageTitle] = useState("Throw dice");
   const appliedTheme = useMemo(
     () => createTheme(darkModelEnabled ? darkTheme : lightTheme),
     [darkModelEnabled],
@@ -36,13 +36,13 @@ const App = () => {
               justifyContent: "space-between",
             }}
           >
-            Dice Generator
+            {pageTitle}
             <ToggleThemeButton
               darkModelEnabled={darkModelEnabled}
               setDarkModelEnabled={setDarkModelEnabled}
             />
           </h1>
-          <TabNavigation />
+          <TabNavigation setPageTitle={setPageTitle} />
         </Container>
       </ThemeProvider>
     </React.Fragment>
