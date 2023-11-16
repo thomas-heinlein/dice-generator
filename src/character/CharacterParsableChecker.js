@@ -28,10 +28,6 @@ const isParsableCharacter = (value) => {
     }
 
     titleWithItems.items.forEach((item) => {
-      if (!hasProperty(item, "description")) {
-        console.error("Parsing error: description is missing", item);
-        valid = false;
-      }
       if (!hasProperty(item, "value")) {
         console.error("Parsing error: value is missing", item);
         valid = false;

@@ -6,7 +6,9 @@ import yaml from "js-yaml";
 import isParsableCharacter from "./CharacterParsableChecker";
 
 const CharacterEdit = ({ character, setCharacter }) => {
-  const [alert, setAlert] = useState();
+  const [alert, setAlert] = useState(
+    isParsableCharacter(character) ? "parsable" : "not_parsable",
+  );
 
   const convertYmlToJson = (yml) => yaml.load(yml);
   const isParsable = (value) => {
@@ -27,7 +29,7 @@ const CharacterEdit = ({ character, setCharacter }) => {
       const newCharacterAsJson = convertYmlToJson(newCharacterAsYml);
       setCharacter(newCharacterAsJson);
       localStorage.setItem("char", JSON.stringify(newCharacterAsJson));
-      setAlert("saved");
+      setAlert("parsable");
     } else {
       setAlert("not_parsable");
     }
@@ -46,13 +48,15 @@ const CharacterEdit = ({ character, setCharacter }) => {
       <Alert severity="info">
         The text is shown in YAML format. Note that spaces and indent matter! If
         you have problems you can always ask ChatGPT to reformat your character
-        values into a valid YAML format.
+        values into a valid YAML format. Each Element in your character sheet
+        must contain of a title followed by items. Each item can be a value (for
+        a single item) or a description and a value (for a key value pair).
       </Alert>
-      {alert === "saved" && (
-        <Alert severity="success">Character saved successfully!</Alert>
+      {alert === "parsable" && (
+        <Alert severity="success">Character sheet valid!</Alert>
       )}
       {alert === "not_parsable" && (
-        <Alert severity="error">Format not correct!</Alert>
+        <Alert severity="error">Character sheet not valid!</Alert>
       )}
 
       <TextField

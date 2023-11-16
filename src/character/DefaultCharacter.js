@@ -174,6 +174,26 @@ export const DefaultCharacter = [
       },
     ],
   },
+  {
+    title: "Inventory",
+    items: [
+      {
+        value: "Leather Armor",
+      },
+      {
+        value: "Helmet",
+      },
+      {
+        value: "30x Rations",
+      },
+      {
+        value: "Light Crossbow",
+      },
+      {
+        value: "30 Bolts",
+      },
+    ],
+  },
 ];
 
 export default DefaultCharacter;

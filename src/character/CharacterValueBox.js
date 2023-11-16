@@ -7,10 +7,20 @@ const CharacterValueBox = ({ boxItems }) => {
   const mapItem = (item, index) => (
     <Box key={boxItems.title + "-" + index}>
       <Typography>
-        {item.description}: {item.value}
+        {item.description
+          ? printItemWithDescription(item)
+          : printItemWithoutDescription(item)}
       </Typography>
     </Box>
   );
+
+  const printItemWithDescription = (item) => (
+    <>
+      {item.description}: {item.value}
+    </>
+  );
+
+  const printItemWithoutDescription = (item) => <>{item.value}</>;
 
   const printItems = () => {
     return boxItems.items.map((item, index) => mapItem(item, index));
