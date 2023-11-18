@@ -8,14 +8,18 @@ import React, { useState } from "react";
 import Stack from "@mui/material/Stack";
 import EditIcon from "@mui/icons-material/Edit";
 import CharacterEdit from "../character/CharacterEdit";
-import DefaultCharacter from "../character/DefaultCharacter";
+import DefaultDnDCharacter from "../character/DefaultDnDCharacter";
 import CharacterValues from "../character/CharacterValues";
+import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
+import HelpPage from "../help/HelpPage";
 
 const TabNavigation = ({ setPageTitle }) => {
   const charFromLocalStorage = localStorage.getItem("char");
   const [currentTab, setCurrentTab] = useState(0);
   const [character, setCharacter] = useState(
-    charFromLocalStorage ? JSON.parse(charFromLocalStorage) : DefaultCharacter,
+    charFromLocalStorage
+      ? JSON.parse(charFromLocalStorage)
+      : DefaultDnDCharacter,
   );
 
   const handleTabChange = (_, newValue) => {
@@ -29,6 +33,9 @@ const TabNavigation = ({ setPageTitle }) => {
       case 2:
         setPageTitle("Edit character sheet");
         break;
+      case 3:
+        setPageTitle("Help");
+        break;
       default:
         console.error("Page title name not defined for tab");
     }
@@ -41,6 +48,7 @@ const TabNavigation = ({ setPageTitle }) => {
         <Tab icon={<CasinoIcon />} />
         <Tab icon={<PersonIcon />} />
         <Tab icon={<EditIcon />} />
+        <Tab icon={<QuestionMarkIcon />} />
       </Tabs>
       <TabPanel currentTab={currentTab} index={0}>
         <DiceComponent />
@@ -50,6 +58,9 @@ const TabNavigation = ({ setPageTitle }) => {
       </TabPanel>
       <TabPanel currentTab={currentTab} index={2}>
         <CharacterEdit character={character} setCharacter={setCharacter} />
+      </TabPanel>
+      <TabPanel currentTab={currentTab} index={3}>
+        <HelpPage />
       </TabPanel>
     </Stack>
   );

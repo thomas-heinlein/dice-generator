@@ -1,4 +1,4 @@
-export const DefaultCharacter = [
+export const DefaultDnDCharacter = [
   {
     title: "General",
     items: [
@@ -196,4 +196,4 @@ export const DefaultCharacter = [
   },
 ];
 
-export default DefaultCharacter;
+export default DefaultDnDCharacter;
