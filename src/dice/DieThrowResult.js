@@ -8,7 +8,7 @@ const DieThrowResult = ({ result }) => {
     <div id="dice-result">
       <Grid container spacing={2} columns={18}>
         {result.map((singleDie, index) => (
-          <Grid key={index} item xs={3}>
+          <Grid key={index} aria-labelledby={"result-die"} item xs={3}>
             <Die label={singleDie} />
           </Grid>
         ))}
