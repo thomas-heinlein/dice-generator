@@ -4,6 +4,17 @@ import CharacterValueBox from "./CharacterValueBox";
 import isParsableCharacter from "./CharacterParsableChecker";
 
 const CharacterValues = ({ character }) => {
+  const getMd = (value) => {
+    if (value.size === "large") {
+      return 12;
+    }
+    if (value.size === "medium") {
+      return 6;
+    }
+
+    return 4;
+  };
+
   const parseCharacterValues = () => {
     if (!isParsableCharacter(character)) {
       return <>Not parsable - please edit YML</>;
@@ -12,7 +23,7 @@ const CharacterValues = ({ character }) => {
     return (
       <Grid container spacing={2}>
         {character.map((value, index) => (
-          <Grid key={index} item xs={12} md={4}>
+          <Grid key={index} item xs={12} md={getMd(value)}>
             <CharacterValueBox boxItems={value} />
           </Grid>
         ))}

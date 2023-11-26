@@ -27,7 +27,7 @@ const CharacterValueBox = ({ boxItems }) => {
   };
 
   return (
-    <Box justifyContent="space-between" width="250px" p={2}>
+    <Box justifyContent="space-between" p={2}>
       <Typography variant="h5">{boxItems.title}</Typography>
       <Divider />
       {printItems()}

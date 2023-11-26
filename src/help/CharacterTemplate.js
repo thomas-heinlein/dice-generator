@@ -10,7 +10,10 @@ import React from "react";
 import AlertDialog from "./AlertDialog";
 
 const CharacterTemplate = ({ id, summary, character, setCharacter }) => {
-  const useTemplate = () => setCharacter(character);
+  const useTemplate = () => {
+    setCharacter(character);
+    localStorage.setItem("char", JSON.stringify(character));
+  };
 
   return (
     <Accordion>

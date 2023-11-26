@@ -39,7 +39,8 @@ const HelpPage = ({ setCharacter }) => {
       </Typography>
       <Typography variant={"span"}>
         Note that you can specify key value pairs (like Hit Points and 20) and
-        simple list items (like Leather Helmet).
+        simple list items (like Leather Helmet). Also, with a size attribute of
+        "medium" or "large", you can specify the size of the box.
       </Typography>
       <Typography variant={"span"} sx={{ whiteSpace: "pre-line" }}>
         <CharacterTemplate

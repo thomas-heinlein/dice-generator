@@ -176,9 +176,10 @@ export const DefaultDnDCharacter = [
   },
   {
     title: "Inventory",
+    size: "medium",
     items: [
       {
-        value: "Leather Armor",
+        value: "Leather Armor with an AC of 11 + Dex modifier",
       },
       {
         value: "Helmet",
