@@ -1,6 +1,6 @@
 import isParsableCharacter from "../CharacterParsableChecker";
-import DefaultDnDCharacter from "../DefaultDnDCharacter";
-import DefaultMinimalCharacter from "../DefaultMinimalCharacter";
+import DefaultDnDCharacter from "../templates/DefaultDnDCharacter";
+import DefaultMinimalCharacter from "../templates/DefaultMinimalCharacter";
 
 it("returns false for empty object", () => {
   expect(isParsableCharacter({})).toBe(false);

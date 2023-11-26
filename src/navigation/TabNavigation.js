@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import Stack from "@mui/material/Stack";
 import EditIcon from "@mui/icons-material/Edit";
 import CharacterEdit from "../character/CharacterEdit";
-import DefaultDnDCharacter from "../character/DefaultDnDCharacter";
+import DefaultDnDCharacter from "../character/templates/DefaultDnDCharacter";
 import CharacterValues from "../character/CharacterValues";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import HelpPage from "../help/HelpPage";
@@ -60,7 +60,7 @@ const TabNavigation = ({ setPageTitle }) => {
         <CharacterEdit character={character} setCharacter={setCharacter} />
       </TabPanel>
       <TabPanel currentTab={currentTab} index={3}>
-        <HelpPage />
+        <HelpPage setCharacter={setCharacter} />
       </TabPanel>
     </Stack>
   );
