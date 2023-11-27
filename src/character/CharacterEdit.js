@@ -35,15 +35,17 @@ const CharacterEdit = ({ character, setCharacter }) => {
 
   const handleChange = (event) => {
     const newCharacterAsYml = event.target.value;
+    const newCharacterAsJson = convertYmlToJson(newCharacterAsYml);
+
     if (
       isParsable(newCharacterAsYml) &&
       isParsableCharacter(convertYmlToJson(newCharacterAsYml))
     ) {
-      const newCharacterAsJson = convertYmlToJson(newCharacterAsYml);
       setCharacter(newCharacterAsJson);
       localStorage.setItem("char", JSON.stringify(newCharacterAsJson));
       setAlert("parsable");
     } else {
+      setCharacter(newCharacterAsJson);
       setAlert("not_parsable");
     }
   };
@@ -56,7 +58,6 @@ const CharacterEdit = ({ character, setCharacter }) => {
       {alert === "not_parsable" && (
         <Alert severity="error">Character sheet not valid!</Alert>
       )}
-
       <Stack direction="row" justifyContent="space-between">
         <Button
           variant="contained"
@@ -66,6 +67,8 @@ const CharacterEdit = ({ character, setCharacter }) => {
           Download
         </Button>
       </Stack>
+      {/* can not use a controlled component here, because the cursor state would
+      be lost after every rerender */}
       <TextField
         fullWidth
         error={alert === "not_parsable"}

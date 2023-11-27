@@ -1,5 +1,37 @@
 export const DefaultGMNotes = [
   {
+    title: "Fighting Order",
+    items: [
+      {
+        value: "Angbar",
+      },
+      {
+        value: "Enemy 1+2",
+      },
+      {
+        value: "Alextraza",
+      },
+      {
+        value: "Odin",
+      },
+      {
+        value: "Enemy 3",
+      },
+      {
+        value: "Jorus",
+      },
+      {
+        value: "Honotia",
+      },
+      {
+        value: "Durr",
+      },
+      {
+        value: "Tiamat",
+      },
+    ],
+  },
+  {
     title: "Enemy 1",
     items: [
       {

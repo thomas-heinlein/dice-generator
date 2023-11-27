@@ -50,15 +50,14 @@ const HelpPage = ({ setCharacter }) => {
           setCharacter={setCharacter}
         />
         <CharacterTemplate
-          id={"default-dnd-char"}
+          id={"dnd-char"}
           summary={"DnD Character"}
           character={DefaultDnDCharacter}
-          setCharacter={setCharacter}
         />
         <CharacterTemplate
+          id={"gm-notes"}
           summary={"DnD GM Notes"}
           character={DefaultGMNotes}
-          setCharacter={setCharacter}
         />
       </Typography>
     </Stack>

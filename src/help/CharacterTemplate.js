@@ -7,12 +7,12 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import React from "react";
-import AlertDialog from "./AlertDialog";
+import Button from "@mui/material/Button";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
-const CharacterTemplate = ({ id, summary, character, setCharacter }) => {
-  const useTemplate = () => {
-    setCharacter(character);
-    localStorage.setItem("char", JSON.stringify(character));
+const CharacterTemplate = ({ id, summary, character }) => {
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(yaml.dump(character));
   };
 
   return (
@@ -24,7 +24,13 @@ const CharacterTemplate = ({ id, summary, character, setCharacter }) => {
         <Typography>
           <Stack spacing={3}>
             <Stack direction="row" justifyContent="space-between">
-              <AlertDialog useTemplate={useTemplate} />
+              <Button
+                variant="contained"
+                startIcon={<ContentCopyIcon />}
+                onClick={copyToClipboard}
+              >
+                Copy
+              </Button>
             </Stack>
             <Paper elevation={0}>
               <Typography sx={{ whiteSpace: "break-spaces" }}>
