@@ -6,17 +6,33 @@ import Stack from "@mui/material/Stack";
 import React, { useState } from "react";
 
 const DiceComponent = () => {
-  const [selectedDice, setSelectedDice] = useState("D20");
-  const [selectedNumber, setSelectedNumber] = useState(1);
+  const getDefaultDie = () => {
+    const lastSelectedDie = localStorage.getItem("die");
+    return lastSelectedDie ?? "D20";
+  };
+
+  const getDefaultNumberOfThrows = () => {
+    const lastSelectedNumberOfThrows = parseInt(
+      localStorage.getItem("numberOfThrows"),
+    );
+    return lastSelectedNumberOfThrows ?? 1;
+  };
+
+  const [selectedDice, setSelectedDice] = useState(getDefaultDie());
+  const [selectedNumber, setSelectedNumber] = useState(
+    getDefaultNumberOfThrows(),
+  );
   const [result, setResult] = useState(null);
   const [throwing, setThrowing] = useState(false);
   const showAllOptionsInitially = window.innerWidth > 900;
 
   const handleDiceChange = (value) => {
+    localStorage.setItem("die", value);
     setSelectedDice(value);
   };
 
   const handleNumberChange = (value) => {
+    localStorage.setItem("numberOfThrows", value.slice(0, -1));
     setSelectedNumber(parseInt(value));
   };
 

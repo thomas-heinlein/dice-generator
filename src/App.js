@@ -18,12 +18,22 @@ const lightTheme = createTheme({
 });
 
 const App = () => {
-  const [darkModelEnabled, setDarkModelEnabled] = useState(true);
+  const getDefaultTheme = () => {
+    const lastSelectedTheme = localStorage.getItem("darkModeEnabled");
+    return lastSelectedTheme ? lastSelectedTheme === "true" : false;
+  };
+
+  const [darkModeEnabled, setDarkModeEnabled] = useState(getDefaultTheme());
   const [pageTitle, setPageTitle] = useState("Throw dice");
   const appliedTheme = useMemo(
-    () => createTheme(darkModelEnabled ? darkTheme : lightTheme),
-    [darkModelEnabled],
+    () => createTheme(darkModeEnabled ? darkTheme : lightTheme),
+    [darkModeEnabled],
   );
+
+  const toggleTheme = () => {
+    localStorage.setItem("darkModeEnabled", (!darkModeEnabled).toString());
+    setDarkModeEnabled(!darkModeEnabled);
+  };
 
   return (
     <React.Fragment>
@@ -38,8 +48,8 @@ const App = () => {
           >
             {pageTitle}
             <ToggleThemeButton
-              darkModelEnabled={darkModelEnabled}
-              setDarkModelEnabled={setDarkModelEnabled}
+              toggleTheme={toggleTheme}
+              darkModeEnabled={darkModeEnabled}
             />
           </h1>
           <TabNavigation setPageTitle={setPageTitle} />
