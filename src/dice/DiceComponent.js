@@ -12,10 +12,10 @@ const DiceComponent = () => {
   };
 
   const getDefaultNumberOfThrows = () => {
-    const lastSelectedNumberOfThrows = parseInt(
-      localStorage.getItem("numberOfThrows"),
-    );
-    return lastSelectedNumberOfThrows ?? 1;
+    const lastSelectedNumberOfThrows = localStorage.getItem("numberOfThrows");
+    return lastSelectedNumberOfThrows
+      ? parseInt(lastSelectedNumberOfThrows)
+      : 1;
   };
 
   const [selectedDice, setSelectedDice] = useState(getDefaultDie());
