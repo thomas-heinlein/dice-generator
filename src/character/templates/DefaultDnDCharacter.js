@@ -11,16 +11,21 @@ export const DefaultDnDCharacter = [
         value: 0,
       },
       {
-        description: "Initiative",
+        skill: "Initiative",
         value: 0,
       },
       {
-        description: "Attack Bonus",
+        skill: "Attack Bonus",
         value: 0,
       },
+    ],
+  },
+  {
+    title: "Weapons",
+    items: [
       {
-        description: "Damage",
-        value: "1d6",
+        weapon: "Greatsword 2H",
+        value: "2d6+2",
       },
     ],
   },
@@ -32,11 +37,11 @@ export const DefaultDnDCharacter = [
         value: 0,
       },
       {
-        description: "Saving Throw",
+        skill: "Saving Throw",
         value: 0,
       },
       {
-        description: "Athletics",
+        skill: "Athletics",
         value: 0,
       },
     ],
@@ -49,19 +54,19 @@ export const DefaultDnDCharacter = [
         value: 0,
       },
       {
-        description: "Saving Throw",
+        skill: "Saving Throw",
         value: 0,
       },
       {
-        description: "Acrobatics",
+        skill: "Acrobatics",
         value: 0,
       },
       {
-        description: "Sleight of Hand",
+        skill: "Sleight of Hand",
         value: 0,
       },
       {
-        description: "Stealth",
+        skill: "Stealth",
         value: 0,
       },
     ],
@@ -74,7 +79,7 @@ export const DefaultDnDCharacter = [
         value: 0,
       },
       {
-        description: "Saving Throw",
+        skill: "Saving Throw",
         value: 0,
       },
     ],
@@ -87,27 +92,27 @@ export const DefaultDnDCharacter = [
         value: 0,
       },
       {
-        description: "Saving Throw",
+        skill: "Saving Throw",
         value: 0,
       },
       {
-        description: "Arcana",
+        skill: "Arcana",
         value: 0,
       },
       {
-        description: "History",
+        skill: "History",
         value: 0,
       },
       {
-        description: "Investigation",
+        skill: "Investigation",
         value: 0,
       },
       {
-        description: "Nature",
+        skill: "Nature",
         value: 0,
       },
       {
-        description: "Religion",
+        skill: "Religion",
         value: 0,
       },
     ],
@@ -120,27 +125,27 @@ export const DefaultDnDCharacter = [
         value: 0,
       },
       {
-        description: "Saving Throw",
+        skill: "Saving Throw",
         value: 0,
       },
       {
-        description: "Animal Handling",
+        skill: "Animal Handling",
         value: 0,
       },
       {
-        description: "Insight",
+        skill: "Insight",
         value: 0,
       },
       {
-        description: "Medicine",
+        skill: "Medicine",
         value: 0,
       },
       {
-        description: "Perception",
+        skill: "Perception",
         value: 0,
       },
       {
-        description: "Survival",
+        skill: "Survival",
         value: 0,
       },
     ],
@@ -153,23 +158,23 @@ export const DefaultDnDCharacter = [
         value: 0,
       },
       {
-        description: "Saving Throw",
+        skill: "Saving Throw",
         value: 0,
       },
       {
-        description: "Deception",
+        skill: "Deception",
         value: 0,
       },
       {
-        description: "Intimidation",
+        skill: "Intimidation",
         value: 0,
       },
       {
-        description: "Performance",
+        skill: "Performance",
         value: 0,
       },
       {
-        description: "Persuasion",
+        skill: "Persuasion",
         value: 0,
       },
     ],
